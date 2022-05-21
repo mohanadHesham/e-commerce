@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Category,Product
+from cart1.forms import CartAddProductForm
 # Create your views here.
 def home(request):
     allcategory = Category.objects.all()
@@ -27,10 +28,13 @@ def child (request):
 
 def product (request, productid):
     product= Product.objects.get(id=productid)
-    return render (request,'pages/product.html',{'product':product})
+    cart_product_form = CartAddProductForm()
+    return render (request,'pages/product.html',{'product':product,'cart_product_form':cart_product_form})
 
 def newArrival(request):
     allcategory = Category.objects.all()
     allproducts = Product.objects.all().order_by("-id")
     return render(request,'pages/newArrival.html',{"allcategory":allcategory,"allproducts":allproducts})
+#------------------------------------------------------------------------------------------
+
 

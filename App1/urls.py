@@ -8,4 +8,5 @@ urlpatterns = [
   path('child',views.child,name='child'),
   path('product/<int:productid>',views.product,name="product"),
   path('newArrival/',views.newArrival,name="newArrival"),
+
 ]
